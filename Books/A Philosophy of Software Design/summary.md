@@ -25,4 +25,40 @@ Causes of Complexity
 
 Modules should be deep. Developers need to face a small fraction of the overall complexity at any given time.
 
-A software system is decomposed into a collection of modules that are relatively independent. Modules can take many forms, such as classes, subsystems, or services. The goal of modular design is to minmize the dependencies between modules.
+A software system is decomposed into a collection of modules that are relatively independent. Modules can take many forms, such as classes, subsystems, or services. The goal of modular design is to minmize the dependencies between modules. A module has two parts: an interface and an implementation. Theinterface describes what the module does but not how it does it. A developer should not understand the implementations of modules other than the one he or she is working in.
+
+# What's in an interface?
+
+It contains two kinds of information: formal and informal. The formal parts of an interface are specified explicitly in the code. Informal information can only be described using comments (e.g. behaviour of an function). 
+
+Abstraction can help you to make it easier for us to think about and manipulate complex things. The interface presents a simplified view of the module's functionality. An abstraction can go wrong in two ways.
+- It can include details that are not really important
+- It omits details that really are important
+
+Modules that provide powerful functionality yet have simple interfaces are called **deep**. A **shallow** module is on whose interface is complicated relative to the functionality it provides.
+
+# Classitis
+
+A conventional wisdom in programming is that classes should be small, not deep. "Any method longer than N lines should be divided into multiple methods". This results in large numbers of shallow classes and methods, which add to overall system complexity.
+
+# Conclusion
+By separating the interface of a module from its implementation, we can hide the complexity of the implementation from the rest of the system.
+
+# Information Hiding
+One of the most important techniques for achieving deep modules is **information hiding**.
+
+The opposite is information leakage. One common case is temporal decomposition: The structure of a system corresponds to the time order in which operations will occur (execution order is reflected in the code structure).
+
+Information leakage occurs when the same knowledge is used in multiple places, such as two different classes that both understand the format of a particular type of file (e.g. a reader and writer functionality belong to the same class). 
+
+When designing modules, focus on the knowledge that's needed to perform each task, not the order in which the tasks occur.
+
+Best Practice Example: get Methods implement data type conversion, e.g. getParameter/getIntParameter
+
+Try to design the private methods within a class so that each method encapsulates some information or capability and hides it from the rest of the class. If you can reduce the number of places where a variable is used, you will eliminate dependencies within the class and reduce its complexity.
+
+# General-Purpose Modules are Deeper
+Eliminating special cases can also make code more efficient. The module's functionality should reflect your current needs, but its interface should not. Push specialization upwards **and** downwards. Specialized code should be cleaned separated from the general-purpose code. This can be done by pushing the spezialed code either up or down in the software stack.
+
+Upwards: The top-level classes of an application, which provide specific features, will necessarily be spezialized for those features.
+Downwards: Example: In order to prevent specialized device characteristics from leaking into the main operating system code, operating system define an interface with general-purpose operations that any secondary storage device must implement.
