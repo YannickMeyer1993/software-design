@@ -1,10 +1,10 @@
 # Table of contents
 1. [Introduction](#introduction)
 2. [Complexity and Symptoms of bad design](#complexity)
-3. [Good Software Design](#good design)
+3. [Good Software Design](#good_design)
 4. [Tools for good Software Design](#tools)
 5. [Comments](#comments)
-6. [Modifying existing Code](#existing code)
+6. [Modifying existing Code](#existing_code)
 
 ## Introduction <a name="introduction"></a>
 All programming requires is a creative mind and the ability to organize your thoughts. The gratest limitation in writing software is our ability to understand the systems that we are creating.
@@ -27,7 +27,7 @@ Causes of Complexity
 
 A conventional wisdom in programming is that classes should be small, not deep. "Any method longer than N lines should be divided into multiple methods". This results in large numbers of shallow classes and methods, which add to overall system complexity.
 
-## Good Software Design <a name="good design"></a>
+## Good Software Design <a name="good_design"></a>
 Modules should be deep. Developers need to face a small fraction of the overall complexity at any given time.
 
 A software system is decomposed into a collection of modules that are relatively independent. Modules can take many forms, such as classes, subsystems, or services. The goal of modular design is to minmize the dependencies between modules. A module has two parts: an interface and an implementation. Theinterface describes what the module does but not how it does it. A developer should not understand the implementations of modules other than the one he or she is working in.
@@ -78,7 +78,6 @@ Few indications that two pieces of code are related
 - they are used together
 - they overlap conceptually
 
-
 ## Tools for good Software Design <a name="tools"></a>
 Approaches to eliminate complexity
 - make code simple and more obvious
@@ -115,7 +114,7 @@ If a variable or method name is broad enough to refer to many things, then it do
 Delayed comments are bad comments. For a new class, write the class interface comments first. Comments should be simple and yet complete. If you find it difficult to write such a comments, that is a hint that there may be a problem with the design of the thing you are describing.
 Early Comments are fun comments: These comments record and test the quality of the design decisions. Writing comments first will mean that the abstraction will be more stable before you start writing code. This will probably save time during coding. In contrast, if you write the code first, the abstractions will probably evolve as you code, which will require more code revisions than the comments-first approach.
 
-## Modifying existing Code <a name="existing code"></a>
+## Modifying existing Code <a name="existing_code"></a>
 When developers go into exiting code, they do not think strategically. They think "What is the smalled possible change I can make that does what I want?". As a result, the system design gets just a bit worse, and the problems accumulate with each step in teh system's evolution. Ideally, when you have finished with each change, the system will have the structure it would have had if you had to designed it from the start with that change in mind. Even if your change does not require refactoring, you should still be on the lookout for design imperfections that you can fix while you are in the code. If you are not making the design better, you are probably making it worse.
 
 When you change existing code, there is a good chance that the changes will invalidate some of the existing comments. The best way to ensure that comments get updated is to position them close to the code they describe. The farther a comment is from the code it describes, the more abstract it should be. When writing a commit message, ask yourself whether developers will need to use the information in the future. If documentation is duplicated, it is more difficult to find and update all the relevant copies. Do not redocument one module's design decision in another module. Don't put comments before a method call that explains what happens in the called method. If information is already documented someplace outside your program, do not repeat the documentation in your program.: just reference it. Check the diffs: Pre-commit scans will detect several other problems, such as accidentally leaving debugging code in the system or failing to fix TODO items. 
