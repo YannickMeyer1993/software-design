@@ -160,7 +160,7 @@ If documentation is duplicated, it is more difficult to find and update all the 
 Do not redocument one module's design decision in another module.
 Don't put comments before a method call that explains what happens in the called method.
 
-If information is already documented someplace outside your program, do not repeat the documentation in your program.: just reference it.
+If information is already documented someplace outside your program, do not repeat the documentation in your program: just reference it.
 Check the diffs: Pre-commit scans will detect several other problems, such as accidentally leaving debugging code in the system or failing to fix TODO items. 
 
 It is easier to notice that someone else's code is non-obvious than to see problems with your own code.
