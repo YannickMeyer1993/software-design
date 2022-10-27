@@ -11,10 +11,10 @@ All programming requires is a creative mind and the ability to organize your tho
 ## Complexity and Symptoms of bad design <a name="complexity"></a>
 **Complexity** is anything related to the structure of a software system that makes it hard to understand and modify the system.
 
-**Symptoms** might be
-- A seemingly simple change requires code modifications in many places.
+**Symptoms** of Complexity might be
+- A simple change requires code modifications in many places.
 - Cognitive Load
-- A **unknown Unknown** means that there is something you need to know, but there is no way for you to find out what it is, or even whether there is an issue. It is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task successfully.
+- It is not obvious which pieces of code must be modified to complete a task, or what information a developer must have to carry out the task successfully.
 
 Causes of Complexity
 - Dependencies (a dependency exists when a given piece of code cannot be understood and modified in isolation)
@@ -23,7 +23,7 @@ Causes of Complexity
 Conventional wisdom in programming is that classes should be small, not deep. "Any method longer than N lines should be divided into multiple methods". This results in large numbers of shallow classes and methods, which add to overall system complexity.
 
 ## Good Software Design <a name="good_design"></a>
-Approaches to eliminate complexity
+**Approaches** to eliminate complexity
 - make code simple and more obvious
 - encapsulate complexity, so that programmers can work on a system without being exposed to all of its complexity at once --> **Modular Design**
 
@@ -62,7 +62,7 @@ Information leakage occurs when the same knowledge is used in multiple places, s
 
 When designing modules, focus on the knowledge that's needed to perform each task, not the order in which the tasks occur.
 
-Best Practice Example: get Methods implement data type conversion, e.g. getParameter/getIntParameter
+**Best Practice Example:** get Methods implement data type conversion, e.g. getParameter/getIntParameter
 
 Try to design the private methods within a class so that each method encapsulates some information or capability and hides it from the rest of the class.
 If you can reduce the number of places where a variable is used, you will eliminate dependencies within the class and reduce its complexity.
@@ -73,18 +73,24 @@ Push specialization upwards **and** downwards.
 Specialized code should be cleaned separated from the general-purpose code.
 This can be done by pushing the specialized code either up or down in the software stack.
 
-Upwards: The top-level classes of an application, which provide specific features, will necessarily be specialized for those features.
-Downwards: Example: In order to prevent specialized device characteristics from leaking into the main operating system code, operating system define an interface with general-purpose operations that any secondary storage device must implement.
+**Upwards:**
+The top-level classes of an application, which provide specific features, will necessarily be specialized for those features.
+
+**Downwards:**
+Example: In order to prevent specialized device characteristics from leaking into the main operating system code, operating system define an interface with general-purpose operations that any secondary storage device must implement.
 
 If a system contains adjacent layers with similar abstractions, this is a red flag that suggests a problem with the class decomposition.
 
-Red Flag: A pass-through method is one that die nothing except pass its arguments to another method, usually with the same API as the pass-through method. This typically indicates that there is not a clean division of responsibility between the classes.
+Red Flag: A pass-through method is one that does nothing except pass its arguments to another method, usually with the same API as the pass-through method.
+This typically indicates that there is not a clean division of responsibility between the classes.
 
-Methods with the same signature are not always bad. A dispatcher method is a method that uses its arguments to select one of several other methods to invoke.
+Methods with the same signature are not always bad.
+A dispatcher method is a method that uses its arguments to select one of several other methods to invoke.
 
 It is more important for a module that it has a simple interface rather than having a simple implementation.
 
-This question that parts belong together or apart, applies to a levels in a system, such as functions, methods, classes, and services. Subdividing creates additional complexity that was not present before
+This question that parts belong together or apart, applies to a levels in a system, such as functions, methods, classes, and services.
+Subdividing creates additional complexity that was not present before
 - number of components increase
 - additional code to manage the components
 - Subdivision creates separation
@@ -95,9 +101,12 @@ Few indications that two pieces of code are related
 - they are used together
 - they overlap conceptually
 
-Reduce the number of places where exceptions must be handled. The first approach is to move forward and complete the work in progress in spite of the exception. The second approach is to abort the operation in progress and report the exception upwards.
+Reduce the number of places where exceptions must be handled.
+The first approach is to move forward and complete the work in progress in spite of the exception.
+The second approach is to abort the operation in progress and report the exception upwards.
 
-DESIGN IT TWICE: You will end up with a much better result if you consider multiple options for each major design decision.
+**DESIGN IT TWICE:**
+You will end up with a much better result if you consider multiple options for each major design decision.
 Try to pick approaches that are radically different from each other.
 When people are growing up, smart people discover that their first quick idea about any problem is sufficient for a good grade.
 This tends to result in bad work habits. This also improves your design skills.
@@ -172,7 +181,6 @@ Software should be designed for ease of reading, not ease of writing.
 Developing incrementally is generally a good idea, but the increments of development should be abstractions, not features.
 The problem with test-driven development is that it focuses attention on getting specific features working, rather than finding the best design.
 
-Design it all at once ( or at least enough to provide a reasonably comprehensive set of core functions). 
-This is more likely to produce a clean design whose pieces fit together well.
+Designing it all at once is more likely to produce a clean design whose pieces fit together well.
 
 One place where it makes sense to write the test first is when fixing bugs. 
